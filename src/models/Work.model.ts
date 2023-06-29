@@ -11,6 +11,7 @@ export class Work{
     chair: any[] = [];
     url: string = "";
     funder: any[] = [];
+    abstract: string = "";
 
     constructor(serverData?: any) {
         if (!!serverData) {
@@ -26,6 +27,7 @@ export class Work{
             this.chair = serverData.chair;
             this.url = serverData.URL;
             this.funder = serverData.funder;
+            this.abstract = serverData.abstract.replace(/<\/?jats:p>/g, '');
         }
     }
 

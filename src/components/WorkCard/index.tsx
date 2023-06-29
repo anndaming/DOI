@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Work} from "../../models/Work.model";
 import {Link} from "react-router-dom";
 import {LinkOutlined} from "@ant-design/icons";
 import styles from "./index.module.css";
 import {useTranslation} from 'react-i18next';
+import {Modal} from "antd";
+import {WorkDetail} from "../WorkDetail";
 
 /**
  * 文献信息卡片
@@ -13,10 +15,11 @@ import {useTranslation} from 'react-i18next';
 export function WorkCard(props: {
     work?: Work
 }) {
+    const [detailVisible, setDetailVisible] = useState(false);
     const {t} = useTranslation();
-
     const {work} = props;
     if (!work) return null;
+
     return <div className={styles.container}>
         {
             work.title.map((title: string) => <p className={styles.title} key={title}>{title}</p>)
@@ -45,9 +48,22 @@ export function WorkCard(props: {
         {
             work.chair && <p>{t("Chairs")}: {work.chairsString}</p>
         }
-        <Link to={work.url} target="_blank" className={styles.linkOuter}>
-            <LinkOutlined />
-            &nbsp;{work.url}
-        </Link>
+        <div className={styles.linkOuter}>
+            <Link to={work.url} target="_blank">
+                <LinkOutlined />
+                &nbsp;{work.url}
+            </Link>
+            <div className={styles.actionDetail} onClick={() => setDetailVisible(true)}>{t("Detail")}</div>
+        </div>
+        <Modal
+            className={styles.actionModal}
+            visible={detailVisible}
+            onCancel={() => setDetailVisible(false)}
+            maskClosable={false}
+            okButtonProps={{ style: { display: 'none' } }}
+            cancelButtonProps={{ style: { display: 'none' } }}
+        >
+            <WorkDetail work={work} />
+        </Modal>
     </div>
 }

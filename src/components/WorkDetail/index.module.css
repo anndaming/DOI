@@ -1,0 +1,68 @@
+.container {
+    padding: 10px;
+}
+
+.title {
+    font-size: 1.7em;
+    line-height: 2em;
+}
+
+.containerDetail {
+    display: flex;
+    width: 100%;
+}
+
+.detailLeft {
+    width: 70%;
+    padding-right: 30px;
+}
+
+.detailAuthor {
+    font-size: 0.9em;
+    margin-bottom: 6px;
+}
+
+.detailAffiliation {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.detailLink {
+    color: rgb(56, 166, 203);
+    text-decoration: none;
+}
+
+.detailDOI {
+    margin-top: 50px;
+}
+
+.detailItemTitle {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 0 0 0.357em;
+    border-bottom: 3px solid #3eb1c8;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.detailItemContent {
+    margin-top: 30px;
+    line-height: 1.6em;
+}
+
+.detailRight {
+    width: 30%;
+    padding-right: 20px;
+}
+
+@media (max-width: 760px) {
+    .containerDetail {
+        display: block;
+    }
+    .detailLeft {
+        width: 100%;
+        padding-right: 20px;
+    }
+    .detailRight {
+        width: 100%;
+        margin-top: 50px;
+    }
+}
