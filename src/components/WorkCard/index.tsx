@@ -18,15 +18,15 @@ export function WorkCard(props: {
         }
         <p className={styles.extra}>
             <span>published <b>{work.publishedDate}</b></span>
-            <span>in <b>{work.shortContainerTitle}</b></span>
+            <span> in <b>{work.shortContainerTitle}</b></span>
             {
-                work.volume !== undefined && <span>volume <b>{work.volume}</b></span>
+                work.volume !== undefined && <span> volume <b>{work.volume}</b></span>
             }
             {
-                work.issue !== undefined && <span>issue <b>{work.issue}</b></span>
+                work.issue !== undefined && <span> issue <b>{work.issue}</b></span>
             }
             {
-                work.page !== undefined && <span>on pages <b>{work.page}</b></span>
+                work.page !== undefined && <span> on pages <b>{work.page}</b></span>
             }
         </p>
         {

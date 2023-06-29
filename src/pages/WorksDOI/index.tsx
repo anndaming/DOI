@@ -11,7 +11,7 @@ import {MainMenu} from "../../components/MainMenu";
 
 const Search = Input.Search;
 const wurl = require("wurl");
-
+const sprintf = require("sprintf");
 
 const WorksDOI = observer(function () {
     const [doi, setDoi] = useState('');
@@ -38,13 +38,16 @@ const WorksDOI = observer(function () {
             return;
         }
         // 替换浏览器上的地址而不刷新页面
-        window.history.pushState({}, "", `${window.location.pathname}?${qs.stringify({q:value})}`);
+        window.history.pushState({}, "", `${window.location.pathname}?${qs.stringify({q: value})}`);
+        setWork(undefined);
         setLoading(true);
         // 根据用户输入的DOI去查询文献
         const r = await client.work(value);
         if (r.ok && r.status === 200) {
             // 将文献数据实例化
             setWork(new Work(r.content.message));
+        } else {
+            notification.error({message: sprintf(t("errorDOINotFound"), value), duration: 10})
         }
         setLoading(false);
     }
