@@ -5,6 +5,11 @@ import {LinkOutlined} from "@ant-design/icons";
 import styles from "./index.module.css";
 import {useTranslation} from 'react-i18next';
 
+/**
+ * 文献信息卡片
+ * @param props.work 文献信息模型
+ * @constructor Graig
+ */
 export function WorkCard(props: {
     work?: Work
 }) {

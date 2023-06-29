@@ -34,6 +34,11 @@ const items: MenuItem[] = [
 ];
 
 
+/**
+ * 主菜单组件
+ * @param props.activeKey 当前应当处理选中态的key
+ * @constructor Graig
+ */
 export function MainMenu(props: {
     activeKey?: string
 }) {
