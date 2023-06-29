@@ -1,0 +1,34 @@
+a {
+    text-decoration: none;
+}
+
+p {
+    display: block;
+    margin: 0 0 9px;
+}
+
+.container {
+    padding: 1em;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.extra {
+    margin-top: 0.5em;
+    color: #999999;
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+
+.extra b {
+    font-size: 1.1em;
+}
+
+.link-outer {
+    margin-top: 1.5em;
+    margin-left: 0.2em;
+    color: rgb(56, 166, 203);
+}
