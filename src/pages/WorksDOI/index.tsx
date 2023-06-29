@@ -19,7 +19,7 @@ const WorksDOI = observer(function () {
     useEffect(() => {
         // 通过url传递的参数直接查询
         const params = wurl('?', window.location.href);
-        if(!!params.q) {
+        if(params && params.q) {
             setDoi(params.q);
             handleSearch(params.q);
         }
