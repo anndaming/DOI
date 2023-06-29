@@ -16,7 +16,7 @@ const sprintf = require("sprintf");
 const WorksDOI = observer(function () {
     const [doi, setDoi] = useState('');
     const [loading, setLoading] = useState(false);
-    const [work, setWork] = useState((): Work | undefined => undefined);
+    const [works, setWorks] = useState((): Work[] => []);
     const client = new CrossrefClient();
     const {t} = useTranslation();
 
@@ -39,13 +39,13 @@ const WorksDOI = observer(function () {
         }
         // 替换浏览器上的地址而不刷新页面
         window.history.pushState({}, "", `${window.location.pathname}?${qs.stringify({q: value})}`);
-        setWork(undefined);
+        setWorks([]);
         setLoading(true);
         // 根据用户输入的DOI去查询文献
         const r = await client.work(value);
         if (r.ok && r.status === 200) {
             // 将文献数据实例化
-            setWork(new Work(r.content.message));
+            setWorks([new Work(r.content.message)]);
         } else {
             notification.error({message: sprintf(t("errorDOINotFound"), value), duration: 10})
         }
@@ -67,7 +67,9 @@ const WorksDOI = observer(function () {
                     size="large"
                 />
             </div>
-            <WorkCard work={work}/>
+            {
+                works.map((work: Work) => <WorkCard key={work.doi} work={work} /> )
+            }
         </div>
     </div>
 })
