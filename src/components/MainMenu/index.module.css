@@ -1,0 +1,18 @@
+.menuFloat {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    .menuLeft {
+        display: none;
+        width: 256px;
+    }
+    .menuFloat {
+        display: block;
+        position: fixed;
+        margin-top: 40px;
+        margin-left: 10px;
+    }
+}
+
+

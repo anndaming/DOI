@@ -6,6 +6,8 @@ import {Work} from "../../models/Work.model";
 import {WorkCard} from "../../components/WorkCard";
 import qs from "querystring";
 import {useTranslation} from 'react-i18next';
+import styles from "./index.module.css";
+import {MainMenu} from "../../components/MainMenu";
 
 const Search = Input.Search;
 const wurl = require("wurl");
@@ -38,24 +40,32 @@ const WorksDOI = observer(function () {
         // 替换浏览器上的地址而不刷新页面
         window.history.pushState({}, "", `${window.location.pathname}?${qs.stringify({q:value})}`);
         setLoading(true);
+        // 根据用户输入的DOI去查询文献
         const r = await client.work(value);
         if (r.ok && r.status === 200) {
+            // 将文献数据实例化
             setWork(new Work(r.content.message));
         }
         setLoading(false);
     }
 
-    return <div>
-        <Search
-            placeholder={t("enterDOI")}
-            value={doi}
-            onChange={(e) => setDoi(e.target.value)}
-            onSearch={handleSearch}
-            enterButton
-            allowClear
-            loading={loading}
-        />
-        <WorkCard work={work}/>
+    return <div className={styles.container}>
+        <MainMenu activeKey="WorksDOI"/>
+        <div className={styles.containerRight}>
+            <div className={styles.containerSearch}>
+                <Search
+                    placeholder={t("enterDOI")}
+                    value={doi}
+                    onChange={(e) => setDoi(e.target.value)}
+                    onSearch={handleSearch}
+                    enterButton
+                    allowClear
+                    loading={loading}
+                    size="large"
+                />
+            </div>
+            <WorkCard work={work}/>
+        </div>
     </div>
 })
 

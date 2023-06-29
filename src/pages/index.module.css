@@ -17,10 +17,16 @@
 }
 
 .searchDescription {
-    font-size: 3em;
+    font-size: 1.5em;
     line-height: 1em;
     color: #4f5858;
     text-align: left;
     width: 80%;
     margin: 12px;
+}
+
+@media (min-width: 760px) {
+    .searchDescription {
+        font-size: 3em;
+    }
 }

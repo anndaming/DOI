@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    margin-top: 15px;
+}
+
+.containerRight {
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 100%;
+}
+
+.containerSearch {
+    max-width: 60vw;
+    margin-left: 1.5%;
+}
+
+@media (max-width: 760px) {
+    .containerSearch {
+        max-width: 90vw;
+    }
+}
