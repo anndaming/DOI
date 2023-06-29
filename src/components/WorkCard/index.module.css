@@ -42,7 +42,9 @@ p {
 }
 
 .actionDetail {
-    margin-left: 2.5em;
+    color: rgb(56, 166, 203);
+    margin-bottom: 5px;
+    margin-left: 0.2em;
 }
 
 .actionDetail:hover {

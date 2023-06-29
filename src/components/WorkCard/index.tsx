@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Work} from "../../models/Work.model";
 import {Link} from "react-router-dom";
-import {LinkOutlined} from "@ant-design/icons";
+import {LinkOutlined, PaperClipOutlined} from "@ant-design/icons";
 import styles from "./index.module.css";
 import {useTranslation} from 'react-i18next';
 import {Modal} from "antd";
@@ -48,12 +48,15 @@ export function WorkCard(props: {
         {
             work.chair && <p>{t("Chairs")}: {work.chairsString}</p>
         }
+        <div className={styles.actionDetail} onClick={() => setDetailVisible(true)}>
+            <PaperClipOutlined />
+            &nbsp;{t("Detail")}
+        </div>
         <div className={styles.linkOuter}>
             <Link to={work.url} target="_blank">
                 <LinkOutlined />
                 &nbsp;{work.url}
             </Link>
-            <div className={styles.actionDetail} onClick={() => setDetailVisible(true)}>{t("Detail")}</div>
         </div>
         <Modal
             className={styles.actionModal}
