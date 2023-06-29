@@ -3,18 +3,20 @@ import {observer} from "mobx-react";
 import {Input, notification} from 'antd';
 import qs from "querystring";
 import styles from './index.module.css'
+import {useTranslation} from 'react-i18next';
 
 const Search = Input.Search;
 
 const Home = observer(function () {
     const [doi, setDoi] = useState('');
+    const {t} = useTranslation();
 
     async function handleSearch(value?: string) {
         if (!value) {
             value = doi;
         }
         if (!value) {
-            notification.warning({message: "DOI should not be empty!", duration: 3})
+            notification.warning({message: t("warningEnterDOIEmpty"), duration: 3})
             return;
         }
         window.location.href = `/WorksDOI?${qs.stringify({q: value})}`
@@ -24,7 +26,7 @@ const Home = observer(function () {
         <div className={styles.inner}>
             <p className={styles.searchDescription}>Search the metadata of journal articles, books, standards, datasets & more</p>
             <Search
-                placeholder="Enter DOI"
+                placeholder={t("enterDOI")}
                 value={doi}
                 onChange={(e) => setDoi(e.target.value)}
                 onSearch={handleSearch}

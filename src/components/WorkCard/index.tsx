@@ -3,10 +3,13 @@ import {Work} from "../../models/Work.model";
 import {Link} from "react-router-dom";
 import {LinkOutlined} from "@ant-design/icons";
 import styles from "./index.module.css";
+import {useTranslation} from 'react-i18next';
 
 export function WorkCard(props: {
     work?: Work
 }) {
+    const {t} = useTranslation();
+
     const {work} = props;
     if (!work) return null;
     return <div className={styles.container}>
@@ -32,10 +35,10 @@ export function WorkCard(props: {
             </p>
         }
         {
-            work.author && <p>Authors: {work.authorsString}</p>
+            work.author && <p>{t("Authors")}: {work.authorsString}</p>
         }
         {
-            work.chair && <p>Chairs: {work.chairsString}</p>
+            work.chair && <p>{t("Chairs")}: {work.chairsString}</p>
         }
         <Link to={work.url} target="_blank" className={styles.linkOuter}>
             <LinkOutlined />
