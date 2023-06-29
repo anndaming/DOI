@@ -13,13 +13,16 @@
     max-width: 90vh;
     position: relative;
     margin: 0 auto;
-    transform: translate3d(0, -35%, 0);
+    transform: translate3d(0, -40%, 0);
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    border-radius: 20px;
 }
 
 .searchDescription {
     font-size: 1.5em;
     line-height: 1em;
-    color: #4f5858;
+    /*color: #4f5858;*/
     text-align: left;
     width: 80%;
     margin: 12px;
