@@ -1,6 +1,6 @@
 import {observer} from "mobx-react";
 import React, {useEffect, useState} from "react";
-import {Input, notification} from 'antd';
+import {Button, Input, notification} from 'antd';
 import {CrossrefClient} from "@jamesgopsill/crossref-client"
 import {Work} from "../../models/Work.model";
 import {WorkCard} from "../../components/WorkCard";
@@ -8,6 +8,7 @@ import qs from "querystring";
 import {useTranslation} from 'react-i18next';
 import styles from "./index.module.css";
 import {MainMenu} from "../../components/MainMenu";
+import {SearchOutlined} from "@ant-design/icons";
 
 const Search = Input.Search;
 const wurl = require("wurl");
@@ -57,11 +58,12 @@ const WorksDOI = observer(function () {
         <div className={styles.containerRight}>
             <div className={styles.containerSearch}>
                 <Search
+                    data-testid="doiInput"
                     placeholder={t("enterDOI")}
                     value={doi}
                     onChange={(e) => setDoi(e.target.value)}
                     onSearch={handleSearch}
-                    enterButton
+                    enterButton={<Button data-testid="doiInputEnter" type="primary"><SearchOutlined/></Button>}
                     allowClear
                     loading={loading}
                     size="large"
