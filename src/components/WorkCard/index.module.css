@@ -8,14 +8,13 @@ p {
 }
 
 .container {
-    margin-top: 1em;
-    padding: 1em;
-    border-bottom: 1px solid #eeeeee;
+    margin: 1em;
 }
 
 .title {
     font-size: 20px;
     line-height: 27px;
+    white-space: normal;
 }
 
 .extra {
@@ -55,3 +54,4 @@ p {
     width: 90% !important;
     max-width: 1200px;
 }
+

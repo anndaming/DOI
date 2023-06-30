@@ -3,7 +3,7 @@ import {Work} from "../../models/Work.model";
 import {LinkOutlined, PaperClipOutlined} from "@ant-design/icons";
 import styles from "./index.module.css";
 import {useTranslation} from 'react-i18next';
-import {Modal} from "antd";
+import {Card, Modal} from "antd";
 import {WorkDetail} from "../WorkDetail";
 
 /**
@@ -19,10 +19,7 @@ export function WorkCard(props: {
     const {work} = props;
     if (!work) return null;
 
-    return <div className={styles.container}>
-        {
-            work.title.map((title: string) => <p className={styles.title} key={title}>{title}</p>)
-        }
+    return <Card type="inner" className={styles.container} title={<div className={styles.title}>{(work.title.map((title: string) => title)).join("\n")}</div>}>
         <p className={styles.extra}>
             <span>published <b>{work.publishedDate}</b></span>
             <span> in <b>{work.shortContainerTitle}</b></span>
@@ -67,5 +64,5 @@ export function WorkCard(props: {
         >
             <WorkDetail work={work} />
         </Modal>
-    </div>
+    </Card>
 }
