@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Work} from "../../models/Work.model";
-import {Link} from "react-router-dom";
 import {LinkOutlined, PaperClipOutlined} from "@ant-design/icons";
 import styles from "./index.module.css";
 import {useTranslation} from 'react-i18next';
@@ -53,14 +52,14 @@ export function WorkCard(props: {
             &nbsp;{t("Detail")}
         </div>
         <div className={styles.linkOuter}>
-            <Link to={work.url} target="_blank">
-                <LinkOutlined />
+            <a href={work.url} target="_blank">
+                <LinkOutlined/>
                 &nbsp;{work.url}
-            </Link>
+            </a>
         </div>
         <Modal
             className={styles.actionModal}
-            visible={detailVisible}
+            open={detailVisible}
             onCancel={() => setDetailVisible(false)}
             maskClosable={false}
             okButtonProps={{ style: { display: 'none' } }}

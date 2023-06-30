@@ -27,7 +27,7 @@ export class Work{
             this.chair = serverData.chair;
             this.url = serverData.URL;
             this.funder = serverData.funder;
-            this.abstract = serverData.abstract.replace(/<\/?jats:p>/g, '');
+            this.abstract = (serverData.abstract || "").replace(/<\/?jats:p>/g, '');
         }
     }
 

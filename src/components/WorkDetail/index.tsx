@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import {Work} from "../../models/Work.model";
 import {useTranslation} from 'react-i18next';
 import styles from "./index.module.css";
-import {Link} from "react-router-dom";
 import {LinkOutlined} from "@ant-design/icons";
-import { Card } from "antd";
+import {Card} from "antd";
 
 
 /**
@@ -37,10 +36,10 @@ export function WorkDetail(props: {
                                 }
                                 {
                                     author.ORCID && <span>
-                                        <Link to={author.ORCID} target="_blank" className={styles.detailLink}>
-                                            <LinkOutlined />
+                                        <a href={author.ORCID} target="_blank" className={styles.detailLink}>
+                                            <LinkOutlined/>
                                             &nbsp;{author.ORCID}
-                                        </Link>
+                                        </a>
                                     </span>
                                 }
                             </div>)
@@ -49,9 +48,9 @@ export function WorkDetail(props: {
                 }
                 <div className={styles.detailDOI}>
                     DOI:&nbsp;
-                    <Link to={work.url} target="_blank" className={styles.detailLink}>
+                    <a href={work.url} target="_blank" className={styles.detailLink}>
                         {work.url}
-                    </Link>
+                    </a>
                 </div>
                 <div className={styles.detailItemTitle}>
                     <b>{t("ABSTRACT")}</b>
@@ -61,10 +60,10 @@ export function WorkDetail(props: {
                 </div>
             </div>
             <div className={styles.detailRight}>
-                <Card type="inner" title={t("PUBLISHED")} size="small" style={{ width: 200 }}>
+                <Card type="inner" title={t("PUBLISHED")} size="small" style={{width: 200}}>
                     <p>{work.publishedDate}</p>
                 </Card>
-                <Card type="inner" title={t("ISSUE")} size="small" style={{ width: 200, marginTop: 30 }}>
+                <Card type="inner" title={t("ISSUE")} size="small" style={{width: 200, marginTop: 30}}>
                     <p>
                         <span><b>{work.shortContainerTitle}</b></span>
                         {
